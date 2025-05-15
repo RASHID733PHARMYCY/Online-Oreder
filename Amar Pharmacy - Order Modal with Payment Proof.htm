@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amar Pharmacy - Order Modal with Payment Proof</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0fdf4;
+      margin: 0; padding: 0;
+    }
+    header {
+      background: #10b981;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      padding: 1rem;
+    }
+    button {
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    /* Modal styles */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0; width: 100%; height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .step {
+      display: none;
+    }
+    .step.active {
+      display: block;
+    }
+    input[type=text], input[type=tel], input[type=number] {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0 16px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .btn-group {
+      text-align: right;
+    }
+    .btn-group button {
+      margin-left: 10px;
+    }
+    .invoice {
+      background: #e6f4ea;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Rashid online Pharmacy 360</h1>
+  <p>ওষুধ অর্ডার করুন ঘরে বসে</p>
+</header>
+
+<div class="container">
+  <h2>Available Products</h2>
+  <div id="product-list">
+    <div>
+      <strong>Naafbost 100ml syrp </strong><br />
+      Qty per Box: 50<br />
+      Price: BDT 25<br />
+      <button onclick="openModal('Naafbost 100ml', 25)">Order Now</button>
+    </div>
+    <hr />
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+    <hr/>
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+    <hr/>
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+    <hr/>
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+    <hr/>
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+    <hr/>
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+    <hr/>
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+    <hr/>
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+    <hr/>
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+    <hr/>
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+    <hr/>
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+    <hr/>
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+    <hr/>
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+    <hr/>
+    <div>
+      <strong>Azinnaf 50ml/Azitromaicen (Prescription only)</strong><br />
+      Qty per Box: 25<br />
+      Price: BDT 50<br />
+      <button onclick="openModal('Azinnaf 50ml', 50)">Order Now</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="orderModal" class="modal">
+  <div class="modal-content">
+    <!-- Step 1: Product -->
+    <div class="step active" id="step1">
+      <h3>Step 1: Confirm Product</h3>
+      <p><strong>Product:</strong> <span id="modalProductName"></span></p>
+      <p><strong>Price per Box:</strong> BDT <span id="modalProductPrice"></span></p>
+      <p><strong>Delevary Charge:50</strong> BDT <span id="Delevary Charge"></span></p>
+      <button onclick="nextStep()">Next</button>
+      <button onclick="closeModal()" style="background:#888;">Cancel</button>
+    </div>
+
+    <!-- Step 2: Order Details -->
+    <div class="step" id="step2">
+      <h3>Step 2: Your Details</h3>
+      <label>Full Name:</label>
+      <input type="text" id="customerName" placeholder="আপনার নাম" required />
+      <label>Phone Number:</label>
+      <input type="tel" id="customerPhone" placeholder="মোবাইল নম্বর" required />
+      <label>Address:</label>
+      <input type="text" id="customerAddress" placeholder="ঠিকানা" required />
+      <label>Quantity (Boxes):</label>
+      <input type="number" id="orderQuantity" min="1" value="1" required />
+      <label>Remarks</label>
+      <input type="Text" id="Remarks" placeholder=" Optional"/>
+      <div class="btn-group">
+        <button onclick="prevStep()">Back</button>
+        <button onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Invoice & Payment -->
+    <div class="step" id="step3">
+      <h3>Step 3: Invoice & Payment</h3>
+      <div class="invoice" id="invoiceDetails"></div>
+      <p><strong>Payment Method:</strong></p>
+      <p>Send payment via <strong>Nagad / Bkash</strong> to number: <strong>01910984074</strong></p>
+      <p>অর্ডার সম্পন্ন করতে পরবর্তী ধাপে যান এবং পেমেন্টের প্রমাণ দিন।</p>
+      <div class="btn-group">
+        <button onclick="prevStep()">Back</button>
+        <button onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Payment Proof Upload -->
+    <div class="step" id="step4">
+      <h3>Step 4: Payment Proof Upload</h3>
+      <p>অনুগ্রহ করে আপনার Bkash / Nagad পেমেন্টের প্রমাণ সরবরাহ করুন।</p>
+      <label>Transaction ID (অথবা স্ক্রিনশট আপলোডের জন্য লিঙ্ক দিন):</label>
+      <input type="text" id="paymentProof" placeholder="Transaction ID দিন" required />
+      <label> (স্ক্রিনশট আপলোড দিন):</label>
+      <input type="file"/>
+      <div class="btn-group">
+        <button onclick="prevStep()">Back</button>
+        <button onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 5: Confirmation -->
+    <div class="step" id="step5">
+      <h3>ধন্যবাদ!</h3>
+      <p>আপনার অর্ডার সফলভাবে গ্রহণ করা হয়েছে।</p>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentStep = 1;
+  let selectedProduct = '';
+  let productPrice = 0;
+
+  function openModal(productName, price) {
+    selectedProduct = productName;
+    productPrice = price;
+    currentStep = 1;
+    showStep(currentStep);
+    document.getElementById('modalProductName').innerText = selectedProduct;
+    document.getElementById('modalProductPrice').innerText = productPrice;
+    // Reset form fields
+    document.getElementById('customerName').value = '';
+    document.getElementById('customerPhone').value = '';
+    document.getElementById('customerAddress').value = '';
+    document.getElementById('orderQuantity').value = 1;
+    document.getElementById('paymentProof').value = '';
+    document.getElementById('orderModal').style.display = 'block';
+  }
+
+  function closeModal() {
+    document.getElementById('orderModal').style.display = 'none';
+  }
+
+  function showStep(step) {
+    const steps = document.querySelectorAll('.step');
+    steps.forEach(s => s.classList.remove('active'));
+    document.getElementById('step' + step).classList.add('active');
+  }
+
+  function nextStep() {
+    // Validation for step 2 (form)
+    if(currentStep === 2){
+      const name = document.getElementById('customerName').value.trim();
+      const phone = document.getElementById('customerPhone').value.trim();
+      const address = document.getElementById('customerAddress').value.trim();
+      const quantity = document.getElementById('orderQuantity').value;
+
+      if(!name || !phone || !address || quantity < 1){
+        alert('অনুগ্রহ করে সঠিক তথ্য প্রদান করুন।');
+        return;
+      }
+      // Generate invoice
+      const totalPrice = productPrice * quantity;
+      document.getElementById('invoiceDetails').innerHTML = `
+        <p>পণ্য: <strong>${selectedProduct}</strong></p>
+        <p>দাম প্রতি বক্স: BDT ${productPrice}</p>
+        <p>পরিমাণ: ${quantity} বক্স</p>
+        <p><strong>মোট মূল্য: BDT ${totalPrice+50}</strong></p>
+      `;
+    }
+
+    // Validation for step 4 (payment proof)
+    if(currentStep === 4){
+      const proof = document.getElementById('paymentProof').value.trim();
+      if(!proof){
+        alert('অনুগ্রহ করে পেমেন্টের প্রমাণ দিন।');
+        return;
+      }
+    }
+
+    if(currentStep < 5){
+      currentStep++;
+      showStep(currentStep);
+    }
+  }
+
+  function prevStep() {
+    if(currentStep > 1){
+      currentStep--;
+      showStep(currentStep);
+    }
+  }
+
+  function submitOrder() {
+    // ekhane apni Firebase-e order save korte paren (akhon demo alert)
+    alert('অর্ডার গ্রহণ করা হয়েছে। ধন্যবাদ!');
+    closeModal();
+  }
+
+  // Close modal if clicked outside content
+  window.onclick = function(event) {
+    const modal = document.getElementById('orderModal');
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+</script>
+
+</body>
+</html>
